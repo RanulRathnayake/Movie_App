@@ -1,5 +1,5 @@
 import { View, Text, ActivityIndicator, FlatList, Image } from 'react-native';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 
 import { images } from "@/constants/images";
 import { icons } from "@/constants/icons";
@@ -31,19 +31,22 @@ const search = () => {
     const timeoutId = setTimeout(async () => {
       if (searchQuery.trim()) {
         await loadMovies();
-
-        // Call updateSearchCount only if there are results
-        if (movies?.length! > 0 && movies?.[0]) {
-          await updateSearchCount(searchQuery, movies[0]);
-          console.log("Run unaa");
-        }
       } else {
         reset();
       }
     }, 500);
-    
+  
     return () => clearTimeout(timeoutId);
   }, [searchQuery]);
+  
+  useEffect(()=>{
+    if (movies?.length! > 0 && movies?.[0]) {
+          updateSearchCount(searchQuery, movies[0]);
+          console.log("Run unaa");
+        }
+        
+  })
+
   return (
     <View className="flex-1 bg-primary">
       <Image
