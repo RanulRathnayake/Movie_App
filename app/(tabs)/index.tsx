@@ -42,6 +42,7 @@ export default function Index() {
           placeholder="Search for a movie"
         />
       </View>
+      
       <>
               <Text className="text-lg text-white font-bold mt-5 mb-3">
                 Latest Movies
