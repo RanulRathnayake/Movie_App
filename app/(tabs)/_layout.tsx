@@ -84,15 +84,12 @@ export default function TabsLayout() {
       />
 
       <Tabs.Screen
-        name="profile"
+        name="watchlist"
         options={{
-          title: "Profile",
+          title: "Watchlist",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon 
-            focused={focused} 
-            icon={icons.person} 
-            title="Profile" />
+            <TabIcon focused={focused} icon={icons.save} title="Watchlist" />
           ),
         }}
       />

@@ -192,3 +192,43 @@ export const fetchMoviesByThought = async (
     matchedKeywords: Array.from(keywordMap.values()).slice(0, 6),
   };
 };
+
+
+/* ------------------------------------------------------------------ */
+/*  WATCHLIST  (ids come from Appwrite, movie data comes from TMDB)    */
+/* ------------------------------------------------------------------ */
+
+/** Fetches full movie info from TMDB for each saved id, keeping the saved order. */
+export const fetchWatchlistMovies = async (
+  movieIds: number[]
+): Promise<Movie[]> => {
+  const settled = await Promise.allSettled(
+    movieIds.map((id) => fetchMovieDetails(id.toString()))
+  );
+
+  const movies: Movie[] = [];
+  settled.forEach((result) => {
+    // Skip any movie that failed to load instead of breaking the whole list
+    if (result.status === "fulfilled") {
+      const m = result.value;
+      movies.push({
+        id: m.id,
+        title: m.title,
+        adult: m.adult,
+        backdrop_path: m.backdrop_path ?? "",
+        genre_ids: m.genres?.map((g) => g.id) ?? [],
+        original_language: m.original_language,
+        original_title: m.original_title,
+        overview: m.overview ?? "",
+        popularity: m.popularity,
+        poster_path: m.poster_path ?? "",
+        release_date: m.release_date,
+        video: m.video,
+        vote_average: m.vote_average,
+        vote_count: m.vote_count,
+      });
+    }
+  });
+
+  return movies;
+};

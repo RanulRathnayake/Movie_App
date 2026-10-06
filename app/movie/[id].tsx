@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { Ionicons } from "@expo/vector-icons";
 import { View, Text, Image, ActivityIndicator, ScrollView, TouchableOpacity, } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -5,7 +7,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { icons } from "@/constants/icons";
 import useFetch from "@/services/usefetch";
 import { fetchMovieDetails } from "@/services/api";
-
+import {
+  addToWatchlist,
+  removeFromWatchlist,
+  isInWatchlist,
+} from "@/services/appwrite";
 interface MovieInfoProps {
   label: string;
   value?: string | number | null;
@@ -27,6 +33,30 @@ const MovieDetails = () => {
     fetchMovieDetails(id as string)
   );
 
+  const [isSaved, setIsSaved] = useState(false);
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    isInWatchlist(Number(id)).then(setIsSaved);
+  }, [id]);
+
+  const toggleWatchlist = async () => {
+    if (saving) return;
+    const next = !isSaved;
+
+    setSaving(true);
+    setIsSaved(next); // update the icon immediately
+    try {
+      if (next) await addToWatchlist(Number(id));
+      else await removeFromWatchlist(Number(id));
+    } catch (error) {
+      console.error("Error updating watchlist:", error);
+      setIsSaved(!next); // undo if Appwrite failed
+    } finally {
+      setSaving(false);
+    }
+  };
+
   if (loading)
     return (
       <SafeAreaView className="bg-primary flex-1">
@@ -46,6 +76,17 @@ const MovieDetails = () => {
             resizeMode="stretch"
           />
 
+          <TouchableOpacity
+            onPress={toggleWatchlist}
+            className="absolute top-5 right-5 rounded-full size-12 bg-dark-200/80 flex items-center justify-center"
+          >
+            <Ionicons
+              name={isSaved ? "heart" : "heart-outline"}
+              size={26}
+              color={isSaved ? "#AB8BFF" : "#FFFFFF"}
+            />
+          </TouchableOpacity>
+          
           <TouchableOpacity className="absolute bottom-5 right-5 rounded-full size-14 bg-white flex items-center justify-center">
             <Image
               source={icons.play}
