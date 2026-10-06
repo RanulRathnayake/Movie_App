@@ -73,12 +73,12 @@ export default function TabsLayout() {
       />
 
       <Tabs.Screen
-        name="saved"
+        name="thoughts"
         options={{
-          title: "Saved",
+          title: "Thoughts",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} icon={icons.save} title="Save" />
+            <TabIcon focused={focused} icon={icons.play} title="Mood" />
           ),
         }}
       />
