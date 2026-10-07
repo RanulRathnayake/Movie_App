@@ -19,14 +19,14 @@
 
 <table>
   <tr>
-    <td align="center"><img src="assets/screenshots/home.png" width="230" /><br /><b>Home</b><br /><sub>Trending + latest movies</sub></td>
-    <td align="center"><img src="assets/screenshots/search.png" width="230" /><br /><b>Search</b><br /><sub>Search by movie title</sub></td>
-    <td align="center"><img src="assets/screenshots/mood.png" width="230" /><br /><b>Mood</b><br /><sub>Search by thought or feeling</sub></td>
+    <td align="center"><img src="assets/screenshots/home.jpeg" width="230" /><br /><b>Home</b><br /><sub>Trending + latest movies</sub></td>
+    <td align="center"><img src="assets/screenshots/search.jpeg" width="230" /><br /><b>Search</b><br /><sub>Search by movie title</sub></td>
+    <td align="center"><img src="assets/screenshots/mood.jpeg" width="230" /><br /><b>Mood</b><br /><sub>Search by thought or feeling</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="assets/screenshots/details.png" width="230" /><br /><b>Movie details</b><br /><sub>Overview, genres, budget</sub></td>
-    <td align="center"><img src="assets/screenshots/details-saved.png" width="230" /><br /><b>Saved to watchlist</b><br /><sub>Heart button at top right</sub></td>
-    <td align="center"><img src="assets/screenshots/watchlist.png" width="230" /><br /><b>Watchlist</b><br /><sub>Your saved movies</sub></td>
+    <td align="center"><img src="assets/screenshots/details.jpeg" width="230" /><br /><b>Movie details</b><br /><sub>Overview, genres, budget</sub></td>
+    <td align="center"><img src="assets/screenshots/details-saved.jpeg" width="230" /><br /><b>Saved to watchlist</b><br /><sub>Heart button at top right</sub></td>
+    <td align="center"><img src="assets/screenshots/watchlist.jpeg" width="230" /><br /><b>Watchlist</b><br /><sub>Your saved movies</sub></td>
   </tr>
 </table>
 
