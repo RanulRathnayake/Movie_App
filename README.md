@@ -32,7 +32,7 @@
 
 ---
 
-## ✨ Features
+## Features
 
 - **Home:** Shows the most searched movies as a "Trending" row, plus a grid of the latest movies from TMDB.
 - **Search by title:** Type a movie name and get matching results as you type (debounced to avoid spamming the API).
@@ -44,7 +44,7 @@
 
 ---
 
-## 🧠 How the Mood search works
+## How the Mood search works
 
 TMDB has no "search by feeling" endpoint, so the app combines two of its endpoints:
 
@@ -56,7 +56,7 @@ Before step 1, the thought is cleaned: stop words such as "I", "my" and "because
 
 If fewer than 5 movies are found, a **mood-to-genre fallback** kicks in (for example sad → Drama + Romance, scared → Horror + Thriller) so the user still gets suggestions.
 
-## 🔖 How the Watchlist works
+## How the Watchlist works
 
 ```
 Heart tapped ──► Appwrite  { user_id, movie_id }
@@ -68,7 +68,7 @@ The app has no login, so each install generates a random `user_id`, stores it on
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Area | Technology |
 |---|---|
@@ -82,7 +82,7 @@ The app has no login, so each install generates a random `user_id`, stores it on
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── app/
@@ -107,7 +107,7 @@ The app has no login, so each install generates a random `user_id`, stores it on
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -152,7 +152,7 @@ For both collections, open **Settings → Permissions** and give the role **Any*
 - `metrics`: Create, Read, Update
 - `watchlist`: Create, Read, Delete
 
-> ⚠️ This is the simplest setup for a demo. For real users, switch to Appwrite authentication with per-user permissions.
+> This is the simplest setup for a demo. For real users, switch to Appwrite authentication with per-user permissions.
 
 ### 3. Add environment variables
 
@@ -178,24 +178,7 @@ Scan the QR code with Expo Go. If your phone is on a different network, use `npx
 
 ---
 
-## ⚠️ Known Limitations
-
-- **Mood search depends on TMDB keywords.** Common themes (breakup, grief, friendship, revenge) work well, while very unusual phrases may fall back to genres.
-- **English only.** Thoughts in other languages are not translated before searching.
-- **Watchlist is tied to the device.** Reinstalling the app creates a new ID, so the old list is no longer reachable until accounts are added.
-- **Open collection permissions.** See the note in the Appwrite setup.
-
-## 🔮 Future Ideas
-
-- User accounts with Appwrite Auth, so the watchlist follows the user across devices
-- Smarter mood detection with an LLM or sentiment model, including Sinhala input
-- "Watched" status and ratings on the watchlist
-- Filters by genre and year on the search screen
-- Share a watchlist with friends
-
----
-
-## 🙏 Credits
+## Credits
 
 - Movie data from [The Movie Database (TMDB)](https://www.themoviedb.org). *This product uses the TMDB API but is not endorsed or certified by TMDB.*
 - The base app (Home, Search, Details, Trending) follows the [JavaScript Mastery](https://www.youtube.com/@javascriptmastery) React Native movie app tutorial. The Mood search and Watchlist features were added on top of it.
